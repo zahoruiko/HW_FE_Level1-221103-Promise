@@ -9,34 +9,28 @@
 <body>
     <h1>Down counter: 10 -> 1</h1>
     <p>С использованием Promise</p> 
-    <h1 id="counter"></h1>
+    
+    <h1 id="counter0"></h1>
     <script>
       // Стартовое значение
-      let from = 10; 
+      let from0 = 10; 
       // Конечное значение
-      let to = 1;
-      // Этот вывод не обязательный (для "красоты")
-      counter.innerHTML = from;
+      let to0 = 1;
       // Определяем функцию для отображения обратного отсчета
-      function downCounterPromise() {
+      function downCounterPromise0() {
         // Создаем объект Promise
-        let promise = new Promise((resolve, reject) => {
-          // Так как JavaScript не может отновременно выполнять микрозадачу и изменять DOM, 
-          // поэтому необходимо сделать приостановку в работу 
-          setTimeout(() => resolve(""), 500);
-        }).then((data) => { // data - не используется, так как используются "глобальные" переменные
-        // Сначала отображаем текущее значение обратного отсчета, а затем уменьшаем его на единицу   
-        counter.innerHTML = from--;
-        // и проверяем - не достигли ли мы конечной точки. 
-        // Если не достигли, тогда производим очередной рекурсивный запуск этой функции,
-        // чтобы выполнить следующую итерацию
-          if (from >= to) {
-            downCounterPromise();
-          }
+        new Promise((resolve) => {
+          counter0.innerHTML = from0--;
+          resolve(console.log("Tick"));
+        })
+        .then(() => { 
+          if (from0 >= to0) {
+            setTimeout(() => downCounterPromise0(), 500);
+          } 
         });
       }
       // Первый запуск функции счетчка
-      downCounterPromise();
+      downCounterPromise0();
     </script>
 
     <p>Без использования Promise</p>
