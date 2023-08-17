@@ -8,17 +8,17 @@
 </head>
 <body>
     <h1>Down counter: 10 -> 1</h1>
-    <p>С использованием Promise</p> 
+    <p>Using Promise</p> 
     
     <h1 id="counter0"></h1>
     <script>
-      // Стартовое значение
+      // Starting value
       let from0 = 10; 
-      // Конечное значение
+      // Final value
       let to0 = 1;
-      // Определяем функцию для отображения обратного отсчета
+      // Defining a function to display the countdown
       function downCounterPromise0() {
-        // Создаем объект Promise
+        // Creating a Promise object
         new Promise((resolve) => {
           counter0.innerHTML = from0--;
           resolve(console.log("Tick"));
@@ -29,31 +29,31 @@
           } 
         });
       }
-      // Первый запуск функции счетчка
+      // First launch of the counter function
       downCounterPromise0();
     </script>
 
-    <p>Без использования Promise</p>
+    <p>Without using Promise</p>
     <h1 id="counter2"></h1>
     <script>
-        // Стартовое значение для цикла
+        // Starting value for the cycle
         let i = 10;
 
-        // Определяем функцию вывода обратного отсчета
+        // Defining the countdown output function
         function downCounter() {
-          // Отображаем текущее значение и уменьшаем для следующец итерации
+          // We display the current value and reduce it for the next iteration
           counter2.innerHTML = i--;
-          // Если значение больше нуля, тогда производим новый вызов цикла, 
-          // чтобы он отобразил следующее значение
+          // If the value is greater than zero, then we make a new call 
+          //  to the loop so that it displays the following value
           if (i > 0) {
-            // Пауза необходима, чтобы дать возможность движку Javascript 
-            // отобразить изменение значения счетчика на странице, так как
-            // изменения в DOM могут быть внесены только после выполнения задачи
-            // (в данном случае -  после выполнения цикла  do-while) 
+            // The pause is necessary to allow the Javascript engine to display 
+            //  the change in the counter value on the page, since changes to the DOM 
+            //  can only be made after the task is completed (in this case, 
+            //  after the do-while loop is executed)
             setTimeout(downCounter, 500);
           }
         }
-        // Первый вызов функции
+        // The first function call
         downCounter();
       </script>
 </body>
